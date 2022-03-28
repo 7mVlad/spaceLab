@@ -16,19 +16,20 @@ class Orders {
 
     // добавление заказа
     public function addOrder(int $idUser, int $idProduct, int $amount, string $address, int $phone) {
-        $query = "INSERT INTO Orders (id_user, id_product, amount, address, phone) VALUES ('$idUser','$idProduct', '$amount', '$address', '$phone')";
-        mysqli_query($this->db, $query);
+        $sql = "INSERT INTO orders (id_user, id_product, amount, address, phone) VALUES ('$idUser','$idProduct', '$amount', '$address', '$phone')";
+        $this->db->exec($sql);
     }
 
     // изменение заказа
     public function updateOrder(int $idUser, int $idProduct, int $amount, string $address, int $phone, string $condition) {
-        $query = "UPDATE Orders SET id_user='$idUser', id_product='$idProduct', amount='$amount', address='$address', phone='$phone' WHERE $condition";
-        mysqli_query($this->db, $query);
+        $sql = "UPDATE orders SET id_user='$idUser', id_product='$idProduct', amount='$amount', address='$address', phone='$phone' WHERE $condition";
+        $this->db->exec($sql);
     }
 
     // удаление заказа
     public function deleteOrder(string $condition) {
-        $query = "DELETE FROM Orders WHERE $condition";
-        mysqli_query($this->db, $query);
+        $sql = "DELETE FROM orders WHERE $condition";
+        $this->db->exec($sql);
     }
 }
+

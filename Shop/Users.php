@@ -15,20 +15,20 @@ class User {
 
     // добавление пользователя
     public function addUser(string $name, string $email, string $password) {
-        $query = "INSERT INTO Users (name, email, password) VALUES ('$name','$email','$password')";
-        mysqli_query($this->db, $query);
+        $sql = "INSERT INTO users (name, email, password) VALUES ('$name','$email','$password')";
+        $this->db->exec($sql);
     }
 
     // изменение данных пользователя
     public function updateUser(string $name, string $email, string $password, string $condition) {
-        $query = "UPDATE Users SET name='$name', email='$email', password='$password' WHERE $condition";
-        mysqli_query($this->db, $query);
+        $sql = "UPDATE users SET name='$name', email='$email', password='$password' WHERE $condition";
+        $this->db->exec($sql);
     }
 
     // удаление пользователя
     public function deleteUser(string $condition) {
-        $query = "DELETE FROM Users WHERE $condition";
-        mysqli_query($this->db, $query);
+        $sql = "DELETE FROM users WHERE $condition";
+        $this->db->exec($sql);
     }
 }
 

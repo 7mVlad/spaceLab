@@ -2,7 +2,7 @@
 
 require_once "database.php";
 
-class Cart {
+class ShoppingCart {
 
     private $db; 
  
@@ -12,22 +12,21 @@ class Cart {
     }
     
     // добавление в корзину
-    public function addProductCart(string $id, int $amount) {
-        $query = "INSERT INTO ShoppingCart (id_product, amount) VALUES ('$id', '$amount')";
-        mysqli_query($this->db, $query);
+    public function addCart(int $idUser, int $idProduct, int $amount) {
+        $sql = "INSERT INTO shopping_cart (id_user, id_product, amount) VALUES ('$idUser', '$idProduct', '$amount')";
+        $this->db->exec($sql);
+    }
+
+    public function updateCart(int $idUser, int $idProduct, int $amount, string $condition) {
+        $sql = "UPDATE shopping_cart SET id_user='$idUser', id_product='$idProduct', amount='$amount' WHERE $condition";
+        $this->db->exec($sql);
     }
     
     // удаление с корзины
-    public function deleteProductCart(string $id) {
-        $query = "DELETE FROM ShoppingCart WHERE $id";
-        mysqli_query($this->db, $query);
+    public function deleteCart(string $id) {
+        $sql = "DELETE FROM shopping_cart WHERE $id";
+        $this->db->exec($sql);
     }
 
 }
 
-$query = "SELECT id FROM Product";
-$result = mysqli_query($db, $query);
-for($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
-
-$cart = new Cart($db);
-$cart->addProductCart($data[0]['id'], 2);

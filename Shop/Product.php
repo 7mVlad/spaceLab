@@ -13,18 +13,21 @@ class Product {
     }
 
     public function addProduct(string $title, string $description, int $price) {
-        $query = "INSERT INTO Product (title, description, price) VALUES ('$title','$description','$price')";
-        mysqli_query($this->db, $query);
+        $sql = "INSERT INTO products (title, description, price) VALUES ('$title','$description','$price')";
+        $this->db->exec($sql);
     }
 
     public function updateProduct(string $title, string $description, int $price, string $condition) {
-        $query = "UPDATE Product SET title='$title', description='$description', price='$price' WHERE $condition";
-        mysqli_query($this->db, $query);
+        $sql = "UPDATE products SET title='$title', description='$description', price='$price' WHERE $condition";
+        $this->db->exec($sql);
     }
 
     public function deleteProduct (string $condition) {
-        $query = "DELETE FROM Product WHERE $condition";
-        mysqli_query($this->db, $query);
+        $sql = "DELETE FROM products WHERE $condition";
+        $this->db->exec($sql);
     }
 }
+
+$product = new Product($db);
+$product->deleteProduct( 'id = 10');
 

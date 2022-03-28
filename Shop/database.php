@@ -15,11 +15,9 @@ $name = 'shop';
 // $db = mysqli_connect($host, $user, $pass, $name);
 
 try {
-    $database = new PDO("mysql:host = $host; dbname=shop", $user, $pass);
+    $db = new PDO("mysql:host = $host; dbname=$name", $user, $pass);
 
-    $sql = "CREATE DATABASE test";
-    $database->exec($sql);
 }
 catch(PDOException $e) {
-    echo "Ошибка" . $e->getMessage();
+    echo "Произошла ошибка подключения" . $e->getMessage();
 }
