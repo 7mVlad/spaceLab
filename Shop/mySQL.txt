@@ -1,0 +1,26 @@
+// Запросы SQL
+
+// Добавление 
+INSERT INTO User VALUES(NULL, 'User_3', 'User_3@gmail.com', 1321);
+
+// Удаление
+DELETE FROM User WHERE id = 3;
+
+// Изменение
+UPDATE User SET password = 'asad' WHERE id = 1;
+
+// Получение данных
+SELECT * FROM User;
+
+// Самый дорогой товар
+SELECT MAX(price) FROM Product;
+
+// Средняя стоимость товара
+SELECT AVG(price) FROM Product;
+
+// INNER JOIN
+SELECT name, id_product, amount FROM Users INNER JOIN Orders ON Users.id = Orders.id_user;
+
+
+// 
+SELECT SUM(amount) FROM Orders GROUP BY id_user LIMIT 1;
