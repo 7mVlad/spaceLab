@@ -29,5 +29,5 @@ class Product {
 }
 
 $product = new Product($db);
-$product->deleteProduct( 'id = 10');
+$product->deleteProduct('id=2');
 
