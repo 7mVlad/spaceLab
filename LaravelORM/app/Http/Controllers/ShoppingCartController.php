@@ -33,11 +33,11 @@ class ShoppingCartController extends Controller
 
     public function delete() {
 
-        $shoppingCart = ShoppingCart::find(1);
+        $shoppingCart = ShoppingCart::find(2);
         $shoppingCart->delete();
 
         // Восстановление
-        // $orderRestore = Order::withTrashed()->find(1);
-        // $orderRestore->restore();
+        // $shoppingCartRestore = shoppingCart::withTrashed()->find(1);
+        // $shoppingCartRestore->restore();
     }
 }

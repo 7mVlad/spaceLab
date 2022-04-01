@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function update() {
 
-        $user = User::find(1);
+        $user = User::find(2);
         $user->update([
             'name' => 'update_user_1',
             'email' => 'update_user_1@user.com',
@@ -34,7 +34,7 @@ class UserController extends Controller
 
     public function delete() {
 
-        $user = User::find(1);
+        $user = User::find(3);
         $user->delete();
 
         // Восстановление

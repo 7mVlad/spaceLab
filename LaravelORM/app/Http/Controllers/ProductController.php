@@ -34,7 +34,7 @@ class ProductController extends Controller
 
     public function delete() {
 
-        $product = Product::find(1);
+        $product = Product::find(2);
         $product->delete();
 
         // Восстановление

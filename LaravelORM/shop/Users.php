@@ -2,6 +2,8 @@
 
 namespace database;
 
+use database\User as DatabaseUser;
+
 require_once 'database.php';
 
 class User {
@@ -32,3 +34,5 @@ class User {
     }
 }
 
+$user = new DatabaseUser($db);
+$user->addUser('user_test','test@example.com', '1234');

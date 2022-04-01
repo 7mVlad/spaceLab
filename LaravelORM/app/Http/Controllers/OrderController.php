@@ -36,7 +36,7 @@ class OrderController extends Controller
 
     public function delete() {
 
-        $order = Order::find(1);
+        $order = Order::find(2);
         $order->delete();
 
         // Восстановление
