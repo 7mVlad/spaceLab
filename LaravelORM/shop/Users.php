@@ -2,7 +2,6 @@
 
 namespace database;
 
-use database\User as DatabaseUser;
 
 require_once 'database.php';
 
@@ -16,8 +15,8 @@ class User {
     }
 
     // добавление пользователя
-    public function addUser(string $name, string $email, string $password) {
-        $sql = "INSERT INTO users (name, email, password) VALUES ('$name','$email','$password')";
+    public function addUser(int $id, string $name, string $email, string $password) {
+        $sql = "INSERT INTO users (id, name, email, password) VALUES ('$id', '$name', '$email', '$password')";
         $this->db->exec($sql);
     }
 
@@ -34,5 +33,5 @@ class User {
     }
 }
 
-$user = new DatabaseUser($db);
-$user->addUser('user_test','test@example.com', '1234');
+$user = new User($db);
+$user->addUser(3, 'test_user','test@user.com', '1234');

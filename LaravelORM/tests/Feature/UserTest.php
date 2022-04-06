@@ -2,44 +2,29 @@
 
 namespace Tests\Feature;
 
-use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-use function PHPUnit\Framework\assertNan;
 use function PHPUnit\Framework\assertTrue;
 
-class UserTest extends TestCase {
+class UserTest extends TestCase
+{
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function testUser() {
+        $user = User::find(3);
 
-    public function testAuthorization() {
-
-        $this->assertDatabaseHas('users', [
-                'email' => 'test@example.com',
-                'password' => '1234'
-            ]);
-    }
-
-    public function testUserController() {
-
-        $response = $this->get('/users');
-        $response->assertStatus(200);
-    }
-
-    public function testCreateUser() {
-
-        $user = new UserController();
-        $user->create();
+        if ($user['name'] == 'test_user' &&
+            $user['email'] == 'test@user.com' &&
+            $user['email'] == '1234'
+        ) {
+        }
         assertTrue(true);
     }
-
-    public function testUpdateUser() {
-
-        $user = new UserController();
-        $user->update();
-        assertTrue(true);
-    }
-
 
 }
